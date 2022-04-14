@@ -22,7 +22,6 @@ function operate(action, a, b) {
 }
 
 const display = document.querySelector('.display');
-
 const numbers = document.querySelectorAll('.numbers > button');
 
 let value = '';
@@ -31,4 +30,31 @@ numbers.forEach((number) => {
         value += e.target.value;
         display.textContent = value;
     });
+});
+
+const addButton = document.getElementById('add');
+const subButton = document.getElementById('sub');
+const mulButton = document.getElementById('mul');
+const divButton = document.getElementById('div');
+let operation, value1, value2;
+
+function action(btn) {
+    btn.addEventListener('click', (e) => {
+        value1 = +value;
+        value = '';
+        display.textContent = value;
+        operation = e.target.value;
+    });
+}
+action(addButton);
+action(subButton);
+action(mulButton);
+action(divButton);
+
+const equals = document.getElementById('equals');
+
+equals.addEventListener('click', () => {
+    value2 = +value;
+    const result = operate(operation, value1, value2);
+    display.textContent = result;
 });
