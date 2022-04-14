@@ -28,6 +28,7 @@ const subButton = document.getElementById('sub');
 const mulButton = document.getElementById('mul');
 const divButton = document.getElementById('div');
 const equals = document.getElementById('equals');
+const clear = document.getElementById('clear');
 let operation, value1, value2, result;
 
 let value = '';
@@ -40,6 +41,7 @@ numbers.forEach((number) => {
 
 function action(btn) {
     btn.addEventListener('click', (e) => {
+        if (!value) return;
         if (value1) {
             value2 = value;
             result = operate(operation, +value1, +value2);
@@ -61,9 +63,17 @@ action(mulButton);
 action(divButton);
 
 equals.addEventListener('click', () => {
+    if (!value) return;
     value2 = value;
     result = operate(operation, +value1, +value2);
     value1 = result;
     value = '';
     display.textContent = result;
+});
+
+clear.addEventListener('click', () => {
+    result = 0;
+    display.textContent = result;
+    value = '';
+    value1 = value2 = undefined;
 });
