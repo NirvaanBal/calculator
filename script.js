@@ -30,11 +30,13 @@ const mulButton = document.getElementById('mul');
 const divButton = document.getElementById('div');
 const equals = document.getElementById('equals');
 const clear = document.getElementById('clear');
+const back = document.querySelector('.back');
 let operation,
     value1,
     value2,
     result,
-    divideByZero = false;
+    divideByZero = false,
+    previousValue = 0;
 
 let value = '';
 numbers.forEach((number) => {
@@ -65,7 +67,6 @@ function action(btn) {
             value1 = result;
             value = '';
             display.textContent = result;
-            dot.disabled = false;
         } else {
             value1 = +value;
             operation = e.target.value;
@@ -102,4 +103,27 @@ clear.addEventListener('click', () => {
     value = '';
     value1 = value2 = undefined;
     dot.disabled = false;
+});
+
+back.addEventListener('click', () => {
+    value = value.slice(0, -1);
+    display.textContent = value;
+});
+
+window.addEventListener('keydown', (e) => {
+    if (
+        e.key === '1' ||
+        e.key === '2' ||
+        e.key === '3' ||
+        e.key === '4' ||
+        e.key === '5' ||
+        e.key === '6' ||
+        e.key === '7' ||
+        e.key === '8' ||
+        e.key === '9' ||
+        e.key === '0'
+    ) {
+        value += e.key;
+        display.textContent = value;
+    }
 });
