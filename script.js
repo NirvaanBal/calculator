@@ -23,6 +23,7 @@ function operate(action, a, b) {
 
 const display = document.querySelector('.display');
 const numbers = document.querySelectorAll('.numbers > button');
+const dot = document.getElementById('dot');
 const addButton = document.getElementById('add');
 const subButton = document.getElementById('sub');
 const mulButton = document.getElementById('mul');
@@ -41,6 +42,12 @@ numbers.forEach((number) => {
         value += e.target.value;
         display.textContent = value;
     });
+});
+
+dot.addEventListener('click', () => {
+    value += '.';
+    display.textContent = value;
+    dot.disabled = true;
 });
 
 function action(btn) {
@@ -92,4 +99,5 @@ clear.addEventListener('click', () => {
     display.textContent = result;
     value = '';
     value1 = value2 = undefined;
+    dot.disabled = false;
 });
