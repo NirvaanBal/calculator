@@ -11,7 +11,7 @@ function mul(a, b) {
 }
 
 function div(a, b) {
-    return (a / b).toFixed(2);
+    return (a / b).toFixed(1);
 }
 
 function operate(action, a, b) {
@@ -23,6 +23,12 @@ function operate(action, a, b) {
 
 const display = document.querySelector('.display');
 const numbers = document.querySelectorAll('.numbers > button');
+const addButton = document.getElementById('add');
+const subButton = document.getElementById('sub');
+const mulButton = document.getElementById('mul');
+const divButton = document.getElementById('div');
+const equals = document.getElementById('equals');
+let operation, value1, value2, result;
 
 let value = '';
 numbers.forEach((number) => {
@@ -32,17 +38,20 @@ numbers.forEach((number) => {
     });
 });
 
-const addButton = document.getElementById('add');
-const subButton = document.getElementById('sub');
-const mulButton = document.getElementById('mul');
-const divButton = document.getElementById('div');
-const equals = document.getElementById('equals');
-let operation, value1, value2;
-
 function action(btn) {
     btn.addEventListener('click', (e) => {
-        value1 = +value;
-        value = '';
+        if (value1) {
+            value2 = value;
+            result = operate(operation, +value1, +value2);
+            value1 = result;
+            value = '';
+            display.textContent = result;
+        } else {
+            value1 = +value;
+            operation = e.target.value;
+            value = '';
+        }
+
         operation = e.target.value;
     });
 }
@@ -52,8 +61,9 @@ action(mulButton);
 action(divButton);
 
 equals.addEventListener('click', () => {
-    value2 = +value;
-    const result = operate(operation, value1, value2);
-    value = result;
+    value2 = value;
+    result = operate(operation, +value1, +value2);
+    value1 = result;
+    value = '';
     display.textContent = result;
 });
