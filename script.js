@@ -29,7 +29,11 @@ const mulButton = document.getElementById('mul');
 const divButton = document.getElementById('div');
 const equals = document.getElementById('equals');
 const clear = document.getElementById('clear');
-let operation, value1, value2, result;
+let operation,
+    value1,
+    value2,
+    result,
+    divideByZero = false;
 
 let value = '';
 numbers.forEach((number) => {
@@ -44,6 +48,12 @@ function action(btn) {
         if (!value) return;
         if (value1) {
             value2 = value;
+            if (+value === 0 && operation === 'd') {
+                display.textContent = 'Cannot divide by zero';
+                value1 = value2 = result = operation = undefined;
+                value = '';
+                return;
+            }
             result = operate(operation, +value1, +value2);
             value1 = result;
             value = '';
@@ -65,6 +75,12 @@ action(divButton);
 equals.addEventListener('click', () => {
     if (!value) return;
     value2 = value;
+    if (+value === 0 && operation === 'd') {
+        display.textContent = 'Cannot divide by zero';
+        value1 = value2 = result = operation = undefined;
+        value = '';
+        return;
+    }
     result = operate(operation, +value1, +value2);
     value1 = result;
     value = '';
