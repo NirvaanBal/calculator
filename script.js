@@ -11,7 +11,7 @@ function mul(a, b) {
 }
 
 function div(a, b) {
-    return Math.round(a / b);
+    return (a / b).toFixed(2);
 }
 
 function operate(action, a, b) {
