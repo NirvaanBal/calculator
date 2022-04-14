@@ -42,7 +42,6 @@ function action(btn) {
     btn.addEventListener('click', (e) => {
         value1 = +value;
         value = '';
-        display.textContent = value;
         operation = e.target.value;
     });
 }
