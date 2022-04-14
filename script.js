@@ -20,3 +20,15 @@ function operate(action, a, b) {
     else if (action === 'm') return mul(a, b);
     else if (action === 'd') return div(a, b);
 }
+
+const display = document.querySelector('.display');
+
+const numbers = document.querySelectorAll('.numbers > button');
+
+let value = '';
+numbers.forEach((number) => {
+    number.addEventListener('click', (e) => {
+        value += e.target.value;
+        display.textContent = value;
+    });
+});
