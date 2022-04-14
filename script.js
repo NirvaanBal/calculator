@@ -36,6 +36,7 @@ const addButton = document.getElementById('add');
 const subButton = document.getElementById('sub');
 const mulButton = document.getElementById('mul');
 const divButton = document.getElementById('div');
+const equals = document.getElementById('equals');
 let operation, value1, value2;
 
 function action(btn) {
@@ -50,10 +51,9 @@ action(subButton);
 action(mulButton);
 action(divButton);
 
-const equals = document.getElementById('equals');
-
 equals.addEventListener('click', () => {
     value2 = +value;
     const result = operate(operation, value1, value2);
+    value = result;
     display.textContent = result;
 });
