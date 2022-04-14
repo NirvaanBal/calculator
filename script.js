@@ -22,7 +22,7 @@ function operate(action, a, b) {
 }
 
 const display = document.querySelector('.display');
-const numbers = document.querySelectorAll('.numbers > button');
+const numbers = document.querySelectorAll('.num');
 const dot = document.getElementById('dot');
 const addButton = document.getElementById('add');
 const subButton = document.getElementById('sub');
@@ -65,6 +65,7 @@ function action(btn) {
             value1 = result;
             value = '';
             display.textContent = result;
+            dot.disabled = false;
         } else {
             value1 = +value;
             operation = e.target.value;
@@ -92,6 +93,7 @@ equals.addEventListener('click', () => {
     value1 = result;
     value = '';
     display.textContent = result;
+    dot.disabled = false;
 });
 
 clear.addEventListener('click', () => {

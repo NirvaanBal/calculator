@@ -6,38 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <h1>Calculator</h1>
-
-    <h2 class="display">0</h2>
+    <h1 class="display">0</h1>
 
     <div class="numbers">
-        <button value="1">1</button>
-        <button value="2">2</button>
-        <button value="3">3</button>
-        <button value="4">4</button>
-        <button value="5">5</button>
-        <button value="6">6</button>
-        <button value="7">7</button>
-        <button value="8">8</button>
-        <button value="9">9</button>
-        <button value="0">0</button>
+        <div class="row">
+            <button value="1" class="num">1</button>
+            <button value="2" class="num">2</button>
+            <button value="3" class="num">3</button>
+        </div>
+        <div class="row">
+            <button value="4" class="num">4</button>
+            <button value="5" class="num">5</button>
+            <button value="6" class="num">6</button>
+        </div>
+        <div class="row">
+            <button value="7" class="num">7</button>
+            <button value="8" class="num">8</button>
+            <button value="9" class="num">9</button>
+        </div>
+        <div class="row">
+            <button value="0" class="num">0</button>
+            <button value="." id="dot">.</button>
+        </div>
     </div>
-    <div class="misc">
-        <button value="." id="dot">.</button>
-    </div>
-    <div class="actions">
+
+    <div class="actions row">
         <button id="add" value="a">+</button>
         <button id="sub" value="s">-</button>
-        <button id="mul" value="m">x</button>
+        <button id="mul" value="m">*</button>
         <button id="div" value="d">/</button>
     </div>
 
-    <button id="equals" value="=">=</button>
-    <button id="clear" value="c">C</button>
+    <div class="row">
+        <button id="clear" value="c">AC</button>
+        <button id="equals" value="=">=</button>
+    </div>
 </body>
 
 </html>
