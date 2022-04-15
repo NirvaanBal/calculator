@@ -35,8 +35,7 @@ let operation,
     value1,
     value2,
     result,
-    divideByZero = false,
-    previousValue = 0;
+    divideByZero = false;
 
 let value = '';
 numbers.forEach((number) => {
@@ -53,7 +52,9 @@ dot.addEventListener('click', () => {
 });
 
 function action(btn) {
+    if (!btn) return operation;
     btn.addEventListener('click', (e) => {
+        if (!operation) operation = e.target.value;
         if (!value) return;
         if (value1) {
             value2 = value;
@@ -69,7 +70,6 @@ function action(btn) {
             display.textContent = result;
         } else {
             value1 = +value;
-            operation = e.target.value;
             value = '';
         }
 
@@ -82,7 +82,6 @@ action(mulButton);
 action(divButton);
 
 equals.addEventListener('click', () => {
-    if (!value) return;
     value2 = value;
     if (+value === 0 && operation === 'd') {
         display.textContent = 'Cannot divide by zero';
@@ -91,6 +90,7 @@ equals.addEventListener('click', () => {
         return;
     }
     result = operate(operation, +value1, +value2);
+    operation = undefined;
     value1 = result;
     value = '';
     display.textContent = result;
